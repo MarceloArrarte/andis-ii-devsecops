@@ -30,8 +30,11 @@ jobs:
       uses: docker/build-push-action@v3
       with:
         push: true
-        tags: index.docker.io/${{ secrets.AzureAppService_ContainerUsername_4b695769e1b148ca8fae326b65de119f }}/tontisbank-api:${{ github.sha }}
-        file: ./Dockerfile
+        tags: |
+          index.docker.io/${{ secrets.AzureAppService_ContainerUsername_4b695769e1b148ca8fae326b65de119f }}/tontisbank-api:${{ github.sha }}
+          index.docker.io/${{ secrets.AzureAppService_ContainerUsername_4b695769e1b148ca8fae326b65de119f }}/tontisbank-api:latest
+        file: ./api/Dockerfile
+        context: ./api
 
   deploy:
     runs-on: ubuntu-latest
