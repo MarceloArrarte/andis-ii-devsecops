@@ -11,7 +11,8 @@ services:
     ports:
       - "3000:3000"
     volumes:
-      - src-api:/app
+      - ./api/:/app/
+      - api-modules:/app/node_modules
     networks:
       - tontisbank-network
     restart: unless-stopped
@@ -45,4 +46,4 @@ networks:
 
 volumes:
   mysql-data:
-  src-api:
+  api-modules:
