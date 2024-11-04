@@ -14,9 +14,10 @@ services:
       - src-api:/app
     networks:
       - tontisbank-network
+    restart: unless-stopped
     develop:
       watch:
-        - action: sync
+        - action: sync+restart
           path: ./api
           target: /app
           ignore:
