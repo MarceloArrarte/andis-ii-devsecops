@@ -31,7 +31,7 @@ jobs:
       with:
         push: true
         tags: index.docker.io/${{ secrets.AzureAppService_ContainerUsername_2b9d1b15f9df4ff29a6b6055266789f2 }}/tontisbank-api:${{ github.sha }}
-        file: ./Dockerfile
+        file: ./api/Dockerfile
 
   deploy:
     runs-on: ubuntu-latest
