@@ -24,7 +24,7 @@ jobs:
       - name: Check for vulnerabilities
         uses: oke-py/npm-audit-action@v2
         with:
-          audit_level: moderate
+          audit_level: critical
           github_token: ${{ secrets.GITHUB_TOKEN }}
           issue_assignees: oke-py
           issue_labels: vulnerability,test
