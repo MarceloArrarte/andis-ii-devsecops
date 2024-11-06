@@ -21,11 +21,11 @@ jobs:
         run: npm ci
         
       - name: Check for vulnerabilities
-        uses: luisfontes19/npm-audit-action@v0.1.0
+        uses: oke-py/npm-audit-action@v2
         with:
-          # Github Token to create the pull requests
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          # The path to the npm project
-          project-path: ./api
-          fix: true
-      
+          audit_level: moderate
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          issue_assignees: oke-py
+          issue_labels: vulnerability,test
+          dedupe_issues: true
+          working_directory: ./api
