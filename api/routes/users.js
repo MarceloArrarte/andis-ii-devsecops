@@ -4,9 +4,15 @@ var router = express.Router();
 
 
 router.get('/:id', function(req, res, next) {
-  db.query(`SELECT * FROM users WHERE id = ${req.params.id}`)
-    .then(([data]) => res.status(200).json(data))
-    .catch((error) => res.status(500).json(error));
+  db.query(
+    `SELECT * FROM users WHERE id = ${req.params.id}`,
+    (err, results) => {
+        if (err) {
+            return res.status(500).json(err);
+        }
+        res.status(200).json(results);
+    }
+  );
 });
 
 
@@ -22,9 +28,16 @@ router.post('/', function (req, res, next) {
     return res.status(400).json({ error: 'Missing data in body.'});
   }
 
-  db.query('INSERT INTO users (name, email, age) VALUES (?, ?, ?)', [name, email, age])
-    .then(([{ insertId }]) => res.status(200).json({ id: insertId }))
-    .catch((error) => res.status(500).json(error));
+  db.query(
+    'INSERT INTO users (name, email, age) VALUES (?, ?, ?)',
+    [name, email, age],
+    (err, { insertId }) => {
+      if (err) {
+          return res.status(500).json(err);
+      }
+      res.status(200).json({ id: insertId });
+    }
+  );
 });
 
 

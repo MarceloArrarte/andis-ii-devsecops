@@ -1,5 +1,3 @@
-// Revisar por qué crashea con las versiones nuevas!!
-var db = require('mysql2-promise')();
 const mysql = require('mysql2');
 const fs = require('node:fs');
 
@@ -16,10 +14,8 @@ if (process.env.DB_SSL_CERT) {
   };
 } 
 
-db.configure(dbConfig);
-const connectionCb = mysql.createConnection(dbConfig);
+const db = mysql.createConnection(dbConfig);
 
 module.exports = { 
-    db,
-    connectionCb
+    db
 };
