@@ -16,6 +16,9 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
+    - name: Official SonarQube Scan
+      uses: SonarSource/sonarqube-scan-action@v3.0.0          
+
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v2
 
