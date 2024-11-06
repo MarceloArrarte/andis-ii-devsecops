@@ -15,3 +15,17 @@ jobs:
         uses: actions/dependency-review-action@v4
         with:
           fail-on-severity: high
+
+      - name: Install dependencies
+        run: npm ci
+        
+      - name: Check for vulnerabilities
+        uses: luisfontes19/npm-audit-action@v0.1.0
+        with:
+          # Github Token to create the pull requests
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          # [NPM PARAM] Audit level. Allowed values are: low|moderate|high|critical.
+          level: high
+          # The path to the npm project
+          project-path: ./api
+      
