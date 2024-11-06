@@ -19,9 +19,6 @@ jobs:
       - name: Install dependencies
         working-directory: ./api
         run: npm ci
-
-      - name: List files in ./api
-        run: ls -la ./api
         
       - name: Check for vulnerabilities
         uses: luisfontes19/npm-audit-action@v0.1.0
@@ -32,4 +29,5 @@ jobs:
           level: high
           # The path to the npm project
           project-path: ./api
+          fix: true
       
