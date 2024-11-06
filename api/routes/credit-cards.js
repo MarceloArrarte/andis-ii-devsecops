@@ -4,6 +4,7 @@ var router = express.Router();
 
 
 router.get('/', function(req, res, next) {
+    var a = 123;
     db.query(
         `SELECT * FROM credit_cards WHERE user_id = ${req.query.userId}`,
         (err, results) => {
