@@ -17,6 +17,7 @@ jobs:
           fail-on-severity: high
 
       - name: Install dependencies
+        working-directory: ./api
         run: npm ci
 
       - name: List files in ./api
