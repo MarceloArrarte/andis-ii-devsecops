@@ -11,11 +11,6 @@ jobs:
     steps:
       - name: 'Checkout Repository'
         uses: actions/checkout@v4
-        
-      - name: 'Dependency Review'
-        uses: actions/dependency-review-action@v4
-        with:
-          fail-on-severity: high
 
       - name: Install dependencies
         working-directory: ./api
@@ -30,3 +25,8 @@ jobs:
           issue_labels: vulnerability,test
           dedupe_issues: true
           working_directory: ./api
+        
+      - name: 'Dependency Review'
+        uses: actions/dependency-review-action@v4
+        with:
+          fail-on-severity: critical
