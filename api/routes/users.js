@@ -17,6 +17,7 @@ router.get('/:id', function(req, res, next) {
 
 
 router.post('/', function (req, res, next) {
+  var miVariable = myFunction();
   const apiKey = req.query.apiKey;
   const apiKeyValidator = /^(a+)+[0-9]{3,}$/;
   if (!(apiKey && apiKeyValidator.test(apiKey))) {
