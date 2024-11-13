@@ -19,7 +19,7 @@ router.get('/:id', function(req, res, next) {
 router.post('/', function (req, res, next) {
   const apiKey = req.query.apiKey;
   const apiKeyValidator = /^(a+)+[0-9]{3,}$/;
-  if (!(apiKey && apiKeyValidator.test(apiKey))) {
+  if (!(apiKey && apiKey.length < 10 && apiKeyValidator.test(apiKey))) {
     return res.status(400).json({ error: 'Invalid API key.' });
   }
 
